@@ -1,8 +1,9 @@
-// import Stripe from 'stripe';
+import Stripe from 'stripe';
 
 const stripe = new Stripe(process.env.NEXT_PUBLIC_STRIPE_SECRET_KEY);
 
 export default async function handler(req, res) {
+  console.log(req.body)
   if (req.method === 'POST') {
     try {
       const params = {
@@ -10,7 +11,7 @@ export default async function handler(req, res) {
         mode: 'payment',
         payment_method_types: ['card'],
         billing_address_collection: 'auto',
-        shipping_options: [{ shipping_rate: 'shr_1Kn3IaEnylLNWUqj5rqhg9oV' }],
+        shipping_options: [{ shipping_rate: 'shr_1MgOINBBNc5Mt4ixOi4LrkLo' }],
         line_items: req.body.map((item) => {
           const img = item.image[0].asset._ref;
           const newImage = img
