@@ -1,4 +1,5 @@
 import React, { useRef } from 'react';
+import { useRouter } from 'next/router';
 import Link from 'next/link';
 import {
   AiOutlineMinus,
@@ -20,20 +21,10 @@ const email = 'gideonnnalue@yahoo.com';
 const name = 'gideon nnalue';
 const amount = 1000000;
 
-const componentProps = {
-  email,
-  amount,
-  metadata: {
-    name,
-    phone,
-  },
-  publicKey,
-  text: 'Pay Now',
-  onSuccess: () => {},
-  onClose: () => alert("Wait! You need this oil, don't go!!!!"),
-};
+
 
 const Cart = () => {
+  const router = useRouter();
   const cartRef = useRef();
   const {
     totalPrice,
@@ -41,10 +32,27 @@ const Cart = () => {
     cartItems,
     setShowCart,
     toggleCartItemQuantity,
-    onRemove,
+    onRemove, 
   } = useStateContext();
 
+  const componentProps = {
+    email,
+    amount,
+    metadata: {
+      name,
+      phone,
+    },
+    publicKey,
+    text: 'Pay Now',
+    onSuccess: () => {
+      setShowCart(false);
+      router.push('/success')
+    },
+    onClose: () => alert("Wait! You need this oil, don't go!!!!"),
+  };
+
   const handleCheckout = async () => {
+    
     // const stripe = await getStripe();
     // const response = await fetch('/api/stripe', {
     //   method: 'POST',
