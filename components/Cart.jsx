@@ -11,12 +11,13 @@ import toast from 'react-hot-toast';
 import { useStateContext } from 'context/StateContext';
 import { urlFor } from 'lib/client';
 import getStripe from 'lib/getStripe';
-import { PaystackButton } from 'react-paystack'
+import { PaystackButton } from 'react-paystack';
+import Success from '@/pages/success';
 
-const publicKey = 'pk_test_a3be32a60f18e6f064caa9426ff16407cf622f89'
+const publicKey = 'pk_test_a3be32a60f18e6f064caa9426ff16407cf622f89';
 const phone = '+2349033461851';
-const email = "gideonnnalue@yahoo.com";
-const name = "gideon nnalue";
+const email = 'gideonnnalue@yahoo.com';
+const name = 'gideon nnalue';
 const amount = 1000000;
 
 const componentProps = {
@@ -27,11 +28,10 @@ const componentProps = {
     phone,
   },
   publicKey,
-  text: "Pay Now",
-  onSuccess: () =>
-    alert("Thanks for doing business with us! Come back soon!!"),
+  text: 'Pay Now',
+  onSuccess: () => {},
   onClose: () => alert("Wait! You need this oil, don't go!!!!"),
-}
+};
 
 const Cart = () => {
   const cartRef = useRef();
@@ -44,16 +44,13 @@ const Cart = () => {
     onRemove,
   } = useStateContext();
 
-
   const handleCheckout = async () => {
-    
     // const stripe = await getStripe();
     // const response = await fetch('/api/stripe', {
     //   method: 'POST',
     //   headers: { 'content-type': 'application/json' },
     //   body: JSON.stringify(cartItems),
     // });
-
     // if (response.statusCode === 500) return;
     // const data = await response.json();
     // toast.loading('Redirecting...');
@@ -163,7 +160,7 @@ const Cart = () => {
               <h3>${totalPrice}</h3>
             </div>
             <div className='btn-container'>
-            <PaystackButton {...componentProps} className='btn' />
+              <PaystackButton {...componentProps} className='btn' />
               {/* <button type='button' className='btn' onClick={handleCheckout}>
                 PAY WITH STRIPE
               </button> */}
