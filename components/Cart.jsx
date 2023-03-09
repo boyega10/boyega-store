@@ -17,11 +17,9 @@ import Success from '@/pages/success';
 
 const publicKey = 'pk_test_a3be32a60f18e6f064caa9426ff16407cf622f89';
 const phone = '+2349033461851';
-const email = 'gideonnnalue@yahoo.com';
+const email = 'adeniyibusiness@gmail.com';
 const name = 'gideon nnalue';
 const amount = 1000000;
-
-
 
 const Cart = () => {
   const router = useRouter();
@@ -32,7 +30,7 @@ const Cart = () => {
     cartItems,
     setShowCart,
     toggleCartItemQuantity,
-    onRemove, 
+    onRemove,
   } = useStateContext();
 
   const componentProps = {
@@ -46,13 +44,12 @@ const Cart = () => {
     text: 'Pay Now',
     onSuccess: () => {
       setShowCart(false);
-      router.push('/success')
+      router.push('/success');
     },
     onClose: () => alert("Wait! You need this oil, don't go!!!!"),
   };
 
   const handleCheckout = async () => {
-    
     // const stripe = await getStripe();
     // const response = await fetch('/api/stripe', {
     //   method: 'POST',
