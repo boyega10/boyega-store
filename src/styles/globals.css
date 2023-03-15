@@ -749,3 +749,34 @@ span.text-red {
     margin: auto;
   }
 }
+
+.cart-form {
+ display: flex;
+ flex-direction: column;
+ padding: 14px 28px;
+ border-top: 1px solid #324d67;
+}
+
+.cart-form__item {
+  display: flex;
+  margin-bottom: 8px;
+  align-items: center;
+}
+
+.cart-form__item label {
+  flex-basis: 25%;
+  font-size: 16px;
+  color: #324d67;
+}
+
+.cart-form__item input {
+  border: 1px solid gray;
+  padding: 8px;
+  flex-basis: 60%;
+  font-size: 18px;
+}
+
+.cart-form__item input:focus-visible,
+.cart-form__item input:active {
+  border: 1px solid gray;
+}

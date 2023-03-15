@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import {
@@ -16,12 +16,11 @@ import { PaystackButton } from 'react-paystack';
 import Success from '@/pages/success';
 
 const publicKey = 'pk_test_a3be32a60f18e6f064caa9426ff16407cf622f89';
-const phone = '+2349033461851';
-const email = 'adeniyibusiness@gmail.com';
-const name = 'gideon nnalue';
-const amount = 1000000;
 
 const Cart = () => {
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('')
+  const [fullname, setFullname] = useState('')
   const router = useRouter();
   const cartRef = useRef();
   const {
@@ -35,9 +34,10 @@ const Cart = () => {
 
   const componentProps = {
     email,
-    amount,
+    amount: totalPrice,
+    currency: 'NGN',
     metadata: {
-      name,
+      name: fullname,
       phone,
     },
     publicKey,
@@ -157,6 +157,20 @@ const Cart = () => {
                 </div>
               </div>
             ))}
+        </div>
+        <div className='cart-form'>
+          <div className='cart-form__item'>
+            <label htmlFor='fullname'>Full name:</label>
+            <input type='text' id="fullname" value={fullname} onChange={e => setFullname(e.target.value)}/>
+          </div>
+          <div className='cart-form__item'>
+            <label htmlFor='email'>Email</label>
+            <input type='email' id="email" value={email} onChange={e => setEmail(e.target.value)}/>
+          </div>
+          <div className='cart-form__item'>
+            <label htmlFor='phonenumber'>Phone Number</label>
+            <input type='tel' id="phonenumber" value={phone} onChange={e => setPhone(e.target.value)}/>
+          </div>
         </div>
         {cartItems.length >= 1 && (
           <div className='cart-bottom'>
