@@ -19,8 +19,8 @@ const publicKey = 'pk_test_a3be32a60f18e6f064caa9426ff16407cf622f89';
 
 const Cart = () => {
   const [email, setEmail] = useState('');
-  const [phone, setPhone] = useState('')
-  const [fullname, setFullname] = useState('')
+  const [phone, setPhone] = useState('');
+  const [fullname, setFullname] = useState('');
   const router = useRouter();
   const cartRef = useRef();
   const {
@@ -33,12 +33,12 @@ const Cart = () => {
   } = useStateContext();
 
   const componentProps = {
-    email,
+    email: 'adeoflife@gmail.com',
     amount: totalPrice,
     currency: 'NGN',
     metadata: {
-      name: fullname,
-      phone,
+      name: 'Mike Joe',
+      phone: '08130797544',
     },
     publicKey,
     text: 'Pay Now',
@@ -46,7 +46,7 @@ const Cart = () => {
       setShowCart(false);
       router.push('/success');
     },
-    onClose: () => alert("Wait! You need this oil, don't go!!!!"),
+    // onClose: () => alert("Wait! You need this oil, don't go!!!!"),
   };
 
   const handleCheckout = async () => {
@@ -158,20 +158,35 @@ const Cart = () => {
               </div>
             ))}
         </div>
-        <div className='cart-form'>
+        {/* <div className='cart-form'>
           <div className='cart-form__item'>
             <label htmlFor='fullname'>Full name:</label>
-            <input type='text' id="fullname" value={fullname} onChange={e => setFullname(e.target.value)}/>
+            <input
+              type='text'
+              id='fullname'
+              value={fullname}
+              onChange={(e) => setFullname(e.target.value)}
+            />
           </div>
           <div className='cart-form__item'>
             <label htmlFor='email'>Email</label>
-            <input type='email' id="email" value={email} onChange={e => setEmail(e.target.value)}/>
+            <input
+              type='email'
+              id='email'
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
           </div>
           <div className='cart-form__item'>
             <label htmlFor='phonenumber'>Phone Number</label>
-            <input type='tel' id="phonenumber" value={phone} onChange={e => setPhone(e.target.value)}/>
+            <input
+              type='tel'
+              id='phonenumber'
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+            />
           </div>
-        </div>
+        </div> */}
         {cartItems.length >= 1 && (
           <div className='cart-bottom'>
             <div className='total'>
